@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ThemeProvider } from "@/components/ui/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider"
 import {Inter} from 'next/font/google'
 import Header from "@/components/Header";
 const inter = Inter({subsets : ["latin"]})
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
   }}
     >
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} dotted-backgroud`}>
       <ThemeProvider
             attribute="class"
             defaultTheme="dark"

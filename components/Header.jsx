@@ -3,12 +3,12 @@ import {
     SignInButton,
     SignedIn,
     SignedOut,
-    UserButton
 } from '@clerk/nextjs'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from './ui/button'
 import { PenBox } from 'lucide-react'
+import UserMenu from './userMenu'
 
 function Header() {
     return (
@@ -17,8 +17,8 @@ function Header() {
 
             <nav className='py-6 px-4 flex justify-between items-center'>
                 <Link href="/">
-                    <Image src={'/TrackrLogo.png'} alt='Trackr Logo'
-                        width={700} height={1000} className='h-10 w-auto object-contain' />
+                    <Image src={'/TrackrLogoo.png'} alt='Trackr Logo'
+                        width={300} height={200} className='h-10 w-auto object-contain' />
                 </Link>
 
                 <div className='flex items-center gap-4'>
@@ -36,7 +36,7 @@ function Header() {
                        </SignInButton>
                     </SignedOut>
                     <SignedIn>
-                        <UserButton />
+                        <UserMenu />
                     </SignedIn>
                 </div>
 
