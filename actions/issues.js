@@ -85,6 +85,7 @@ export async function updateIssueOrder(updatedIssues) {
 
 export async function deleteIssue(issueId) {
   const { userId, orgId } = auth();
+  console.log("User ID:", userId, "Org ID:", orgId);
 
   if (!userId || !orgId) {
     throw new Error("Unauthorized");
@@ -93,6 +94,7 @@ export async function deleteIssue(issueId) {
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
   });
+  console.log("User:", user);
 
   if (!user) {
     throw new Error("User not found");
@@ -102,6 +104,7 @@ export async function deleteIssue(issueId) {
     where: { id: issueId },
     include: { project: true },
   });
+  console.log("Issue:", issue);
 
   if (!issue) {
     throw new Error("Issue not found");
@@ -115,6 +118,7 @@ export async function deleteIssue(issueId) {
   }
 
   await db.issue.delete({ where: { id: issueId } });
+  console.log("Issue deleted successfully");
 
   return { success: true };
 }
