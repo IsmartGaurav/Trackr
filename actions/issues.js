@@ -108,7 +108,7 @@ export async function deleteIssue(issueId) {
   }
 
   if (
-    issue.reporterId !== user.id
+    issue.reporterId !== user.id && issue.project.adminId !== user.id
   ) {
     throw new Error("Only the project reporter can delete this issue.");
   }
