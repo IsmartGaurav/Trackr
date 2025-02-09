@@ -84,7 +84,7 @@ export async function updateIssueOrder(updatedIssues) {
 }
 
 export async function deleteIssue(issueId) {
-  const { userId, orgId } = auth();
+  const { userId, orgId } = await auth();
 
   if (!userId || !orgId) {
     throw new Error("Unauthorized");
