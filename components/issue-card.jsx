@@ -63,8 +63,12 @@ export default function IssueCard({
           </Badge>
         </CardContent>
         <CardFooter className="flex flex-col items-start space-y-3">
-          <UserAvatar user={issue.assignee} />
-
+        <UserAvatar user={{
+                ...issue.assignee,
+                name: (issue.assignee?.name?.split(' ')
+                  .filter(part => part !== 'null')
+                  .join(' ') || '').trim() || 'Anonymous'
+              }} />  
           <div className="text-xs text-gray-400 w-full">Created {created}</div>
         </CardFooter>
       </Card>

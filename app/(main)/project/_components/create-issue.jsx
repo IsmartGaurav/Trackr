@@ -126,7 +126,7 @@ export default function IssueCreationDrawer({
                   <SelectContent>
                     {users?.map((user) => (
                       <SelectItem key={user.id} value={user.id}>
-                        {user?.name}
+                        {user?.name?.split(' ').filter(part => part !== 'null').join(' ')}
                       </SelectItem>
                     ))}
                   </SelectContent>

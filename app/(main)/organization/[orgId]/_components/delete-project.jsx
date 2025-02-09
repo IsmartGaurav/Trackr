@@ -7,7 +7,6 @@ import { useOrganization } from "@clerk/nextjs";
 import { deleteProject } from "@/actions/projects";
 import { useRouter } from "next/navigation";
 import useFetch from "@/hooks/use-fetch";
-import { toast } from "sonner";
 
 export default function DeleteProject({ projectId }) {
   const { membership } = useOrganization();
@@ -24,9 +23,7 @@ export default function DeleteProject({ projectId }) {
 
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this project?")) {
-      deleteProjectFn(projectId).then(() => {
-        toast.error('Project deleted successfully!');
-      });
+      deleteProjectFn(projectId);
     }
   };
 

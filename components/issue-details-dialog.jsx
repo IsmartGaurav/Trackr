@@ -32,8 +32,8 @@ export default function IssueDetailsDialog({
   isOpen,
   onClose,
   issue,
-  onDelete = () => {},
-  onUpdate = () => {},
+  onDelete = () => { },
+  onUpdate = () => { },
   borderCol = "",
 }) {
   const [status, setStatus] = useState(issue.status);
@@ -154,11 +154,22 @@ export default function IssueDetailsDialog({
           <div className="flex justify-between">
             <div className="flex flex-col gap-2">
               <h4 className="font-semibold">Assignee</h4>
-              <UserAvatar user={issue.assignee} />
-            </div>
+              <UserAvatar user={{
+                ...issue.assignee,
+                name: (issue.assignee?.name?.split(' ')
+                  .filter(part => part !== 'null')
+                  .join(' ') || '').trim() || 'Anonymous'
+              }} />           
+             </div>
             <div className="flex flex-col gap-2">
               <h4 className="font-semibold">Reporter</h4>
-              <UserAvatar user={issue.reporter} />
+              <UserAvatar user={{
+                ...issue.reporter,
+                name: (issue.reporter?.name?.split(' ')
+                  .filter(part => part !== 'null')
+                  .join(' ') || '').trim() || 'Anonymous'
+              }} />
+
             </div>
           </div>
           {canChange && (
